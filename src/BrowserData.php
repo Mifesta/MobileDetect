@@ -1,6 +1,6 @@
 <?php
 
-namespace MifestaClientBrowserData;
+namespace MifestaBrowserData;
 
 /**
  * Class ClientBrowserData
