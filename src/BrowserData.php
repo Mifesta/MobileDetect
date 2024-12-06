@@ -123,7 +123,7 @@ abstract class BrowserData
      */
     public static function isAnyBot()
     {
-        return preg_match('#(bot|spider|yeti|ichiro)#is', self::getMobileDetect()->getUserAgent()) || self::getMobileDetect()->is('MobileBot') || self::getMobileDetect()->is('Bot');
+        return preg_match('#(bot|spider|yeti|ichiro)#is', self::getMobileDetect()->getUserAgent() ?? '') || self::getMobileDetect()->is('MobileBot') || self::getMobileDetect()->is('Bot');
     }
 
     /**
@@ -135,8 +135,7 @@ abstract class BrowserData
     public static function isBot()
     {
         $classMobileDetect = self::getMobileDetect();
-        $user_agent = $classMobileDetect->getUserAgent();
-
+        $user_agent = $classMobileDetect->getUserAgent() ?? '';
         return $classMobileDetect->is('Bot') || preg_match('#(yeti|ichiro)#is', $user_agent) || (preg_match('#(bot|spider)#is', $user_agent) && ! $classMobileDetect->is('MobileBot'));
     }
 

@@ -1,34 +1,13 @@
 {
-  "name": "mifesta/mobiledetect",
-  "version": "1.3",
-  "type": "library",
-  "description": "Mobile_Detect is a lightweight PHP class for detecting mobile devices. It uses the User-Agent string combined with specific HTTP headers to detect the mobile environment.",
-  "keywords": [
-    "mobile",
-    "mobile detect",
-    "mobile detector",
-    "php mobile detect",
-    "laravel mobile detect",
-    "detect mobile devices"
-  ],
-  "homepage": "https://github.com/mifesta/MobileDetectLaravel",
-  "license": "MIT",
-  "authors": [
-    {
-      "name": "Sergei Gruzdov",
-      "email": "cardee@mifesta.com",
-      "homepage": "https://mifesta.com"
-    }
-  ],
-  "support": {
-    "email": "cardee@mifesta.com"
-  },
-  "require": {
-    "mobiledetect/mobiledetectlib": "2.8.*"
-  },
-  "autoload": {
-    "psr-4": {
-      "MifestaBrowserData\\": "src/"
-    }
-  }
+	"name": "mifesta/mobiledetect",
+	"version": "2.3",
+	"type": "library",
+	"require": {
+		"mobiledetect/mobiledetectlib": "^4.8"
+	},
+	"autoload": {
+		"psr-4": {
+			"MifestaBrowserData\\": "src/"
+		}
+	}
 }
