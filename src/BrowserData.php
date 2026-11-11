@@ -243,9 +243,18 @@ class BrowserData
                 $detect->setUserAgent('');
             }
         } else {
-            $ua = isset($headers['HTTP_USER_AGENT']) && $headers['HTTP_USER_AGENT'] !== ''
-                ? $headers['HTTP_USER_AGENT']
-                : null;
+            // A non-empty User-Agent stops 2.8 and 3.74 from reading
+            // X-Device-User-Agent and the other device UA headers.
+            // Leave the argument empty when one of those headers is present
+            // so the library concatenates them. A lone User-Agent is still
+            // passed through, which keeps CloudFront from replacing it.
+            $ua = null;
+            if (!self::hasAlternateUserAgent($headers)
+                && isset($headers['HTTP_USER_AGENT'])
+                && $headers['HTTP_USER_AGENT'] !== ''
+            ) {
+                $ua = $headers['HTTP_USER_AGENT'];
+            }
             $detect = new $class($headers, $ua);
         }
 
@@ -253,6 +262,30 @@ class BrowserData
         self::$fingerprint = $fingerprint;
 
         return self::$detect;
+    }
+
+    /**
+     * @param array $headers
+     * @return bool
+     */
+    private static function hasAlternateUserAgent($headers)
+    {
+        $keys = array(
+            'HTTP_X_DEVICE_USER_AGENT',
+            'HTTP_X_ORIGINAL_USER_AGENT',
+            'HTTP_X_OPERAMINI_PHONE_UA',
+            'HTTP_X_SKYFIRE_PHONE',
+            'HTTP_X_BOLT_PHONE_UA',
+            'HTTP_DEVICE_STOCK_UA',
+            'HTTP_X_UCBROWSER_DEVICE_UA',
+        );
+        foreach ($keys as $key) {
+            if (isset($headers[$key]) && $headers[$key] !== '') {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
