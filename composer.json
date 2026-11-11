@@ -1,13 +1,40 @@
 {
-	"name": "mifesta/mobiledetect",
-	"version": "2.4",
-	"type": "library",
-	"require": {
-		"mobiledetect/mobiledetectlib": "^4.8"
-	},
-	"autoload": {
-		"psr-4": {
-			"MifestaBrowserData\\": "src/"
-		}
-	}
+    "name": "mifesta/mobiledetect",
+    "description": "Detect phones, tablets and crawlers from the User-Agent and HTTP headers.",
+    "type": "library",
+    "keywords": [
+        "mobile",
+        "tablet",
+        "bot",
+        "crawler",
+        "user-agent",
+        "detection"
+    ],
+    "homepage": "https://github.com/Mifesta/MobileDetect",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Sergei Gruzdov",
+            "email": "cardee@mifesta.com",
+            "homepage": "https://github.com/cardee2000",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "email": "cardee@mifesta.com",
+        "issues": "https://github.com/Mifesta/MobileDetect/issues",
+        "source": "https://github.com/Mifesta/MobileDetect"
+    },
+    "require": {
+        "php": ">=7.4",
+        "mobiledetect/mobiledetectlib": "^3.74 || ^4.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "MifestaBrowserData\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": "php tests/run.php"
+    }
 }
