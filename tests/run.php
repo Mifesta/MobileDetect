@@ -103,6 +103,13 @@ expect_same(BrowserData::isBot(), false, 'desktop bot');
 expect_same(BrowserData::is('iPhone'), false, 'desktop iphone');
 expect_same(BrowserData::version('Android'), false, 'desktop android version');
 
+use_headers(array(
+    'HTTP_USER_AGENT' => $desktop,
+    'HTTP_X_DEVICE_USER_AGENT' => $iphone,
+));
+expect_same(BrowserData::isMobile(), true, 'alternate header mobile');
+expect_same(BrowserData::is('iPhone'), true, 'alternate header iphone');
+
 use_headers(array('HTTP_USER_AGENT' => $cubot));
 expect_same(BrowserData::isMobile(), true, 'cubot mobile');
 expect_same(BrowserData::isBot(), false, 'cubot bot');
