@@ -26,8 +26,8 @@
         "source": "https://github.com/Mifesta/MobileDetect"
     },
     "require": {
-        "php": ">=7.4",
-        "mobiledetect/mobiledetectlib": "^3.74 || ^4.8"
+        "php": ">=7.4 <8.0",
+        "mobiledetect/mobiledetectlib": "^3.74"
     },
     "autoload": {
         "psr-4": {
